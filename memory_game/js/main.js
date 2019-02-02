@@ -1,6 +1,27 @@
 "use strict";
 
-let cards = ["queen", "queen", "king", "king"];
+let cards = [
+  {
+    rank: "queen",
+    suit: "hearts",
+    cardImage: "images/queen-of-hearts.png"
+  },
+  {
+    rank: "queen",
+    suit: "diamonds",
+    cardImage: "images/queen-of-diamonds.png"
+  },
+  {
+    rank: "king",
+    suit: "hearts",
+    cardImage: "images/king-of-hearts.png"
+  },
+  {
+    rank: "king",
+    suit: "diamonds",
+    cardImage: "images/king-of-diamonds.png"
+  }
+];
 let cardsInPlay = [];
 
 function checkForMatch() {
@@ -13,8 +34,10 @@ function checkForMatch() {
     }
   }
 function flipCard(cardId) {
-  console.log("User flipped: " + cards[cardId]);
-  cardsInPlay.push(cards[cardId]);
+  console.log("User flipped a " + cards[cardId].rank);
+  console.log("in the suit of " + cards[cardId].suit);
+  console.log("and an image at " + cards[cardId].cardImage);
+  cardsInPlay.push(cards[cardId].rank);
   checkForMatch();
 }
 
