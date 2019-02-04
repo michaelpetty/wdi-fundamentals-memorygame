@@ -27,19 +27,28 @@ let cardsInPlay = [];
 function checkForMatch() {
   if (cardsInPlay.length === 2) {
     if (cardsInPlay[0] === cardsInPlay[1]) {
-        alert("You found a match!");
-      } else {
-        alert("Sorry, try again.");
-      }
+      alert("You found a match!");
+    } else {
+      alert("Sorry, try again.");
     }
   }
-function flipCard(cardId) {
-  console.log("User flipped a " + cards[cardId].rank);
-  console.log("in the suit of " + cards[cardId].suit);
-  console.log("and an image at " + cards[cardId].cardImage);
-  cardsInPlay.push(cards[cardId].rank);
+}
+function flipCard() {
+  let id = this.getAttribute('data-id');
+  this.setAttribute('src', cards[id].cardImage);
+  cardsInPlay.push(cards[id].rank);
   checkForMatch();
 }
+function createBoard() {
+  for (let i = 0; i < cards.length; i++) {
+    let cardEl = document.createElement('img');
+    cardEl.setAttribute('src', 'images/back.png');
+    cardEl.setAttribute('data-id', i);
+    cardEl.addEventListener('click', flipCard);
+    document.getElementById('game').appendChild(cardEl);
+  }
+}
 
-flipCard(0);
-flipCard(2);
+//flipCard(0);
+//flipCard(2);
+createBoard();
