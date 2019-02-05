@@ -81,3 +81,50 @@ font-size: 0;
   color: #F15B31;
   font-weight: 700;
 }
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 186px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+}
+.modal-content {
+  background-color: #00A6B3;
+  margin: auto;
+  width: 300px;
+  max-width: 100%;
+  box-shadow: 5px 10px 6px #888888;
+}
+.replay {
+  color: #F15B31;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  text-transform: uppercase;
+  text-shadow: 2px 1px #0D2C40;
+}
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#win {
+  display: none;
+  color: #0D2C40;
+  padding: 18px;
+  background-color: #F15B31;
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+#lose {
+  display:none;
+  color: #0D2C40;
+  background-color: #F15B31;
+  padding: 18px;
+  font-size: 24px;
+  font-weight: 600;
+}

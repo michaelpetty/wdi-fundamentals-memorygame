@@ -26,11 +26,17 @@ let cardsInPlay = [];
 
 function checkForMatch() {
   if (cardsInPlay.length === 2) {
+    let modal = document.getElementById('myModal');
     if (cardsInPlay[0] === cardsInPlay[1]) {
-      alert("You found a match!");
+      //alert("You found a match!");
+      document.getElementById('win').style.display = 'block';
+      document.getElementById('lose').style.display = 'none';
     } else {
-      alert("Sorry, try again.");
+      //alert("Sorry, try again.");
+      document.getElementById('lose').style.display = 'block';
+      document.getElementById('win').style.display = 'none';
     }
+    modal.style.display = 'block';
   }
 }
 function flipCard() {
@@ -48,7 +54,24 @@ function createBoard() {
     document.getElementById('game').appendChild(cardEl);
   }
 }
-
-//flipCard(0);
-//flipCard(2);
+function resetBoard() {
+  document.getElementById('game').innerHTML = '';
+  cardsInPlay = [];
+  createBoard();
+}
+// modal
+var modal = document.getElementById('myModal');
+// modal close
+var span = document.getElementsByClassName("replay")[0];
+span.onclick = function() {
+  modal.style.display = "none";
+  resetBoard();
+}
+// bonus modal close
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    resetBoard();
+  }
+}
 createBoard();
