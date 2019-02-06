@@ -24,6 +24,21 @@ let cards = [
 ];
 let cardsInPlay = [];
 
+function getRandomArbitrary(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+function shuffledDeck(min, max) {
+  let cardOrder = [];
+  while (cardOrder.length < cards.length) {
+    let cardId = getRandomArbitrary(min,max);
+    if (!cardOrder.includes(cardId)) {
+      cardOrder.push(cardId);
+    }
+  }
+  return cardOrder;
+}
 function checkForMatch() {
   if (cardsInPlay.length === 2) {
     let modal = document.getElementById('myModal');
@@ -46,10 +61,11 @@ function flipCard() {
   checkForMatch();
 }
 function createBoard() {
-  for (let i = 0; i < cards.length; i++) {
+  let cardsRando = shuffledDeck(0,4);
+  for (let i = 0; i < cardsRando.length; i++) {
     let cardEl = document.createElement('img');
     cardEl.setAttribute('src', 'images/back.png');
-    cardEl.setAttribute('data-id', i);
+    cardEl.setAttribute('data-id', cardsRando[i]);
     cardEl.addEventListener('click', flipCard);
     document.getElementById('game').appendChild(cardEl);
   }
