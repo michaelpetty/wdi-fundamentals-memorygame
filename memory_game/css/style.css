@@ -98,7 +98,7 @@ font-size: 0;
   max-width: 100%;
   box-shadow: 5px 10px 6px #888888;
 }
-.replay {
+.replay, .shuffle {
   color: #F15B31;
   font-size: 18px;
   font-weight: 600;

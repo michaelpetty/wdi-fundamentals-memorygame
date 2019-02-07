@@ -60,6 +60,13 @@ function flipCard() {
   cardsInPlay.push(cards[id].rank);
   checkForMatch();
 }
+function flipBack() {
+  cardsInPlay = [];
+  let boardImgs = document.getElementById('game').getElementsByTagName('img');
+  for (let i = 0; i < cards.length; i++) {
+    boardImgs[i].setAttribute('src', 'images/back.png');
+  }
+}
 function createBoard() {
   let cardsRando = shuffledDeck(0,4);
   for (let i = 0; i < cardsRando.length; i++) {
@@ -76,18 +83,23 @@ function resetBoard() {
   createBoard();
 }
 // modal
-var modal = document.getElementById('myModal');
-// modal close
-var span = document.getElementsByClassName("replay")[0];
-span.onclick = function() {
+let modal = document.getElementById('myModal');
+// modal close and shuffle the deck
+let shuf = document.getElementsByClassName("shuffle")[0];
+shuf.onclick = function() {
   modal.style.display = "none";
   resetBoard();
+}
+let repl = document.getElementsByClassName("replay")[0];
+repl.onclick = function() {
+  modal.style.display = "none";
+  flipBack();
 }
 // bonus modal close
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
-    resetBoard();
+    flipBack();
   }
 }
 createBoard();
